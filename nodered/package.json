@@ -1,0 +1,9 @@
+{
+  "name": "iot-sentinel-nodered",
+  "version": "1.0.0",
+  "description": "IoT Sentinel Node-RED security pipeline",
+  "dependencies": {
+    "node-red-dashboard": "3.6.5",
+    "node-red-node-sqlite": "1.0.2"
+  }
+}

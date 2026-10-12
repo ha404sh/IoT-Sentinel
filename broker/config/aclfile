@@ -1,0 +1,30 @@
+# IoT Sentinel — Mosquitto ACL (Least Privilege)
+
+user temp01
+topic write iot/telemetry/temperature/TEMP-001
+
+user hum01
+topic write iot/telemetry/humidity/HUM-001
+
+user motion01
+topic write iot/telemetry/motion/MOTION-001
+
+user door01
+topic write iot/telemetry/door/DOOR-001
+topic write iot/command/DOOR-001
+
+user camera01
+topic write iot/telemetry/camera/CAM-001
+topic write iot/command/CAM-001
+
+user light01
+topic write iot/telemetry/light/LIGHT-001
+topic write iot/command/LIGHT-001
+
+user nodered
+topic read iot/telemetry/#
+topic write iot/security/events
+topic write iot/security/alerts
+topic write iot/security/incidents
+
+topic deny #

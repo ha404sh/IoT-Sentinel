@@ -1,0 +1,1353 @@
+[
+    {
+        "id": "tab_mqtt_ingest",
+        "type": "tab",
+        "label": "01-MQTT-INGEST",
+        "disabled": false,
+        "info": "MQTT collector"
+    },
+    {
+        "id": "tab_validation",
+        "type": "tab",
+        "label": "02-VALIDATION",
+        "disabled": false,
+        "info": "Schema + topic validation"
+    },
+    {
+        "id": "tab_device_registry",
+        "type": "tab",
+        "label": "03-DEVICE-REGISTRY",
+        "disabled": false,
+        "info": "Identity + state"
+    },
+    {
+        "id": "tab_behavior",
+        "type": "tab",
+        "label": "04-BEHAVIOR",
+        "disabled": false,
+        "info": "Rate + value baselines"
+    },
+    {
+        "id": "tab_detection",
+        "type": "tab",
+        "label": "05-DETECTION",
+        "disabled": false,
+        "info": "Threat detection"
+    },
+    {
+        "id": "tab_correlation",
+        "type": "tab",
+        "label": "06-CORRELATION",
+        "disabled": false,
+        "info": "Event correlation"
+    },
+    {
+        "id": "tab_risk",
+        "type": "tab",
+        "label": "07-RISK-ENGINE",
+        "disabled": false,
+        "info": "Risk scoring"
+    },
+    {
+        "id": "tab_response",
+        "type": "tab",
+        "label": "08-RESPONSE",
+        "disabled": false,
+        "info": "Response + isolation"
+    },
+    {
+        "id": "tab_database",
+        "type": "tab",
+        "label": "09-DATABASE",
+        "disabled": false,
+        "info": "Persistence"
+    },
+    {
+        "id": "tab_dashboard",
+        "type": "tab",
+        "label": "10-DASHBOARD",
+        "disabled": false,
+        "info": "SOC dashboard"
+    },
+    {
+        "id": "tab_admin",
+        "type": "tab",
+        "label": "11-ADMIN",
+        "disabled": false,
+        "info": "Recovery + admin"
+    },
+    {
+        "id": "mqtt_broker_local",
+        "type": "mqtt-broker",
+        "name": "IoT-Sentinel-Broker",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "nodered-iot-sentinel",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": false,
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": false,
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": false,
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ui_base",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-custom",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#06b6d4",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#4B7930",
+                    "value": "#06b6d4",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0a0e17",
+                    "edited": true
+                },
+                "page-backgroundColor": {
+                    "value": "#0a0e17",
+                    "edited": true
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#141821",
+                    "edited": true
+                },
+                "group-textColor": {
+                    "value": "#06b6d4",
+                    "edited": true
+                },
+                "group-borderColor": {
+                    "value": "#1f2937",
+                    "edited": true
+                },
+                "group-backgroundColor": {
+                    "value": "#141821",
+                    "edited": true
+                },
+                "widget-textColor": {
+                    "value": "#e5e7eb",
+                    "edited": true
+                },
+                "widget-backgroundColor": {
+                    "value": "#06b6d4",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#0f1319",
+                    "edited": true
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "dark"
+            }
+        },
+        "site": {
+            "name": "IoT Sentinel SOC",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowReorder": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ui_tab_soc",
+        "type": "ui_tab",
+        "name": "Security Overview",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "df0f2972a23f020e",
+        "type": "ui_group",
+        "name": "01-Header12",
+        "tab": "ui_tab_soc",
+        "order": 6,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ace3748f8f71164b",
+        "type": "ui_group",
+        "name": "02-KPI",
+        "tab": "ui_tab_soc",
+        "order": 7,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dacf5c3e0877289d",
+        "type": "ui_group",
+        "name": "04-Activity",
+        "tab": "ui_tab_soc",
+        "order": 8,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "90b84101aa5c89cd",
+        "type": "ui_group",
+        "name": "06-Top-Devices",
+        "tab": "ui_tab_soc",
+        "order": 9,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "b6f94d819c3ceec2",
+        "type": "ui_group",
+        "name": "08-Registry\t",
+        "tab": "ui_tab_soc",
+        "order": 10,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a70daf1e9889ecf4",
+        "type": "ui_group",
+        "name": "09-Incidents",
+        "tab": "ui_tab_soc",
+        "order": 11,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "783723ba99bac190",
+        "type": "ui_group",
+        "name": "03-Severity",
+        "tab": "ui_tab_soc",
+        "order": 7,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a91002ec36f5e0f4",
+        "type": "ui_group",
+        "name": "05-Distribution",
+        "tab": "ui_tab_soc",
+        "order": 8,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9248c44eb8e29c26",
+        "type": "ui_group",
+        "name": "07-Live-Feed",
+        "tab": "ui_tab_soc",
+        "order": 9,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "mqtt_in_telemetry",
+        "type": "mqtt in",
+        "z": "tab_mqtt_ingest",
+        "name": "Telemetry IN iot/telemetry/#",
+        "topic": "iot/#",
+        "qos": "0",
+        "datatype": "json",
+        "broker": "mqtt_broker_local",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "link_out_ingest"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_ingest",
+        "type": "link out",
+        "z": "tab_mqtt_ingest",
+        "name": "to validation",
+        "mode": "link",
+        "links": [
+            "link_in_validation"
+        ],
+        "x": 375,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "comment_ingest",
+        "type": "comment",
+        "z": "tab_mqtt_ingest",
+        "name": "MQTT Collector — all telemetry topics",
+        "info": "Subscribes to iot/telemetry/# and forwards to validation pipeline.",
+        "x": 200,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "link_in_validation",
+        "type": "link in",
+        "z": "tab_validation",
+        "name": "from ingest",
+        "links": [
+            "link_out_ingest"
+        ],
+        "x": 55,
+        "y": 100,
+        "wires": [
+            [
+                "fn_schema"
+            ]
+        ]
+    },
+    {
+        "id": "fn_schema",
+        "type": "function",
+        "z": "tab_validation",
+        "name": "Schema Validation",
+        "func": "const p = msg.payload;\nconst topic = msg.topic || '';\n\n// If the topic is NOT telemetry, treat it as topic abuse FIRST\nif (!topic.startsWith('iot/telemetry/')) {\n  msg.payload = {\n    event_type: 'TOPIC_ABUSE',\n    severity: 'HIGH',\n    risk_score: 25,\n    description: 'Device ' + ((p && p.device_id) || 'unknown') + ' published to non-telemetry topic: ' + topic,\n    device_id: (p && p.device_id) || 'unknown',\n    mqtt_topic: topic,\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-validation'\n  };\n  msg.invalid = true;\n  return [null, msg];\n}\n\n// Normal telemetry schema validation\nconst errors = [];\nif (!p || typeof p !== 'object') errors.push('invalid JSON object');\nif (!p.device_id) errors.push('missing device_id');\nif (!p.device_type) errors.push('missing device_type');\nif (!p.timestamp) errors.push('missing timestamp');\nif (p.sequence === undefined || p.sequence === null) errors.push('missing sequence');\nif (p.value === undefined) errors.push('missing value');\nif (p.timestamp && !String(p.timestamp).endsWith('Z')) errors.push('timestamp must be UTC ISO8601 ending with Z');\nif (typeof p.sequence === 'number' && p.sequence < 0) errors.push('sequence must be non-negative');\n\nif (errors.length > 0) {\n  msg.payload = {\n    event_type: 'SCHEMA_VALIDATION_FAILURE',\n    severity: 'LOW',\n    risk_score: 10,\n    description: errors.join('; '),\n    device_id: (p && p.device_id) || 'unknown',\n    mqtt_topic: msg.topic,\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-validation'\n  };\n  msg.invalid = true;\n  return [null, msg];\n}\n\nmsg.invalid = false;\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "fn_topic_check"
+            ],
+            [
+                "link_out_invalid"
+            ]
+        ]
+    },
+    {
+        "id": "fn_topic_check",
+        "type": "function",
+        "z": "tab_validation",
+        "name": "Topic Validation",
+        "func": "const p = msg.payload;\nconst topic = msg.topic || '';\nconst expectedPrefix = 'iot/telemetry/';\nconst known = {\n  'TEMP-001': 'iot/telemetry/temperature/TEMP-001',\n  'HUM-001': 'iot/telemetry/humidity/HUM-001',\n  'MOTION-001': 'iot/telemetry/motion/MOTION-001',\n  'DOOR-001': 'iot/telemetry/door/DOOR-001',\n  'CAM-001': 'iot/telemetry/camera/CAM-001',\n  'LIGHT-001': 'iot/telemetry/light/LIGHT-001'\n};\n// Topic abuse detection for known devices writing wrong topic\nif (known[p.device_id] && topic !== known[p.device_id] && !topic.startsWith(expectedPrefix + p.device_type)) {\n  msg.payload = {\n    event_type: 'TOPIC_ABUSE',\n    severity: 'HIGH',\n    risk_score: 25,\n    description: 'Device ' + p.device_id + ' published to unauthorized topic: ' + topic,\n    device_id: p.device_id,\n    mqtt_topic: topic,\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-validation'\n  };\n  return [null, msg];\n}\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 80,
+        "wires": [
+            [
+                "link_out_valid"
+            ],
+            [
+                "link_out_invalid"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_valid",
+        "type": "link out",
+        "z": "tab_validation",
+        "name": "valid",
+        "mode": "link",
+        "links": [
+            "link_in_registry"
+        ],
+        "x": 635,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "link_out_invalid",
+        "type": "link out",
+        "z": "tab_validation",
+        "name": "security event",
+        "mode": "link",
+        "links": [
+            "link_in_detection"
+        ],
+        "x": 635,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "link_in_registry",
+        "type": "link in",
+        "z": "tab_device_registry",
+        "name": "from validation",
+        "links": [
+            "link_out_valid"
+        ],
+        "x": 55,
+        "y": 100,
+        "wires": [
+            [
+                "fn_isolation_check"
+            ]
+        ]
+    },
+    {
+        "id": "fn_isolation_check",
+        "type": "function",
+        "z": "tab_device_registry",
+        "name": "Isolation Gate",
+        "func": "const isolated = global.get('isolated_devices') || {};\nconst id = msg.payload.device_id;\n\nif (isolated[id]) {\n  const lastBlock = context.get('last_block_' + id) || 0;\n  const now = Date.now();\n\n  if (now - lastBlock > 5000) {   // ← 5s بدل 30s\n    context.set('last_block_' + id, now);\n    msg.payload = {\n      event_type: 'POST_ISOLATION_BLOCKED',\n      severity: 'LOW',\n      risk_score: 0,\n      description: 'Telemetry from ISOLATED device rejected: ' + id,\n      device_id: id,\n      mqtt_topic: msg.topic,\n      action: 'REJECT',\n      timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n      source: 'node-red-isolation'\n    };\n    return [null, msg];\n  }\n  return [null, null];\n}\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 230,
+        "y": 100,
+        "wires": [
+            [
+                "fn_identity"
+            ],
+            [
+                "link_out_blocked"
+            ]
+        ]
+    },
+    {
+        "id": "fn_identity",
+        "type": "function",
+        "z": "tab_device_registry",
+        "name": "Device Identity",
+        "func": "const known = ['TEMP-001','HUM-001','MOTION-001','DOOR-001','CAM-001','LIGHT-001'];\nconst id = msg.payload.device_id;\nconst registry = global.get('device_registry') || {};\nconst now = new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z');\n\nif (!known.includes(id)) {\n  msg.payload = {\n    event_type: 'UNAUTHORIZED_DEVICE',\n    severity: 'HIGH',\n    risk_score: 20,\n    description: 'Unknown device_id received: ' + id,\n    device_id: id,\n    mqtt_topic: msg.topic,\n    timestamp: now,\n    source: 'node-red-registry'\n  };\n  return [null, msg];\n}\n\n// Update registry in-memory\nif (!registry[id]) {\n  registry[id] = { device_id: id, device_type: msg.payload.device_type, status: 'ACTIVE', risk_score: 0, first_seen: now, last_seen: now };\n} else {\n  registry[id].last_seen = now;\n}\nglobal.set('device_registry', registry);\nmsg.registry = registry[id];\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 80,
+        "wires": [
+            [
+                "link_out_known"
+            ],
+            [
+                "link_out_unauth"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_known",
+        "type": "link out",
+        "z": "tab_device_registry",
+        "name": "known",
+        "mode": "link",
+        "links": [
+            "link_in_behavior"
+        ],
+        "x": 615,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "link_out_unauth",
+        "type": "link out",
+        "z": "tab_device_registry",
+        "name": "unauthorized",
+        "mode": "link",
+        "links": [
+            "link_in_detection"
+        ],
+        "x": 615,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "link_out_blocked",
+        "type": "link out",
+        "z": "tab_device_registry",
+        "name": "blocked",
+        "mode": "link",
+        "links": [
+            "link_in_detection"
+        ],
+        "x": 415,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "link_in_behavior",
+        "type": "link in",
+        "z": "tab_behavior",
+        "name": "from registry",
+        "links": [
+            "link_out_known"
+        ],
+        "x": 55,
+        "y": 100,
+        "wires": [
+            [
+                "fn_rate"
+            ]
+        ]
+    },
+    {
+        "id": "fn_rate",
+        "type": "function",
+        "z": "tab_behavior",
+        "name": "Message Rate Analysis",
+        "func": "const id = msg.payload.device_id;\nconst now = Date.now();\nconst windowMs = 60000;\nconst maxPerMin = 30; // documented: baseline 1-5, anomaly when >> baseline\n\nlet rates = context.get('rates') || {};\nif (!rates[id]) rates[id] = [];\nrates[id].push(now);\nrates[id] = rates[id].filter(t => now - t < windowMs);\n// Bound memory\nif (rates[id].length > 500) rates[id] = rates[id].slice(-200);\ncontext.set('rates', rates);\n\nif (rates[id].length > maxPerMin) {\n  msg.payload = {\n    event_type: 'MESSAGE_RATE_ANOMALY',\n    severity: 'HIGH',\n    risk_score: 25,\n    description: 'Message rate exceeded device baseline for ' + id + ' (' + rates[id].length + ' in 60s, threshold ' + maxPerMin + ')',\n    device_id: id,\n    mqtt_topic: msg.topic,\n    observed_value: rates[id].length,\n    expected_value: maxPerMin,\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-behavior'\n  };\n  return [null, msg];\n}\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 100,
+        "wires": [
+            [
+                "fn_spoof"
+            ],
+            [
+                "link_out_rate_anom"
+            ]
+        ]
+    },
+    {
+        "id": "fn_value",
+        "type": "function",
+        "z": "tab_behavior",
+        "name": "Sensor Value Check",
+        "func": "const p = msg.payload;\nconst id = p.device_id;\nlet anomaly = false;\nlet expected = '';\n\nif (id === 'TEMP-001' && typeof p.value === 'number' && p.value > 50) {\n  anomaly = true; expected = '<= 50 C (project anomaly threshold)';\n}\nif (id === 'HUM-001' && typeof p.value === 'number' && p.value > 95) {\n  anomaly = true; expected = '<= 95 % (project anomaly threshold)';\n}\n\nif (anomaly) {\n  msg.payload = {\n    event_type: 'SENSOR_VALUE_ANOMALY',\n    severity: 'MEDIUM',\n    risk_score: 15,\n    description: 'Abnormal sensor value for ' + id,\n    device_id: id,\n    mqtt_topic: msg.topic,\n    observed_value: p.value,\n    expected_value: expected,\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-behavior'\n  };\n  return [null, msg];\n}\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 80,
+        "wires": [
+            [
+                "link_out_normal"
+            ],
+            [
+                "link_out_value_anom"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_normal",
+        "type": "link out",
+        "z": "tab_behavior",
+        "name": "normal telemetry",
+        "mode": "link",
+        "links": [
+            "link_in_db_telemetry"
+        ],
+        "x": 685,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "link_out_rate_anom",
+        "type": "link out",
+        "z": "tab_behavior",
+        "name": "rate anomaly",
+        "mode": "link",
+        "links": [
+            "link_in_detection"
+        ],
+        "x": 475,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "link_out_value_anom",
+        "type": "link out",
+        "z": "tab_behavior",
+        "name": "value anomaly",
+        "mode": "link",
+        "links": [
+            "link_in_detection"
+        ],
+        "x": 685,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "fn_spoof",
+        "type": "function",
+        "z": "tab_behavior",
+        "name": "Spoofing Detection",
+        "func": "const id = msg.payload.device_id;\nconst inst = msg.payload.client_instance || 'default';\nlet map = context.get('client_instances') || {};\nconst prev = map[id];\nmap[id] = inst;\ncontext.set('client_instances', map);\nif (prev && prev !== inst) {\n  msg.payload = {\n    event_type: 'DEVICE_SPOOFING',\n    severity: 'CRITICAL',\n    risk_score: 30,\n    description: 'Device ' + id + ' published from a different client instance (' + prev + ' → ' + inst + ')',\n    device_id: id,\n    observed_value: inst,\n    expected_value: prev,\n    mqtt_topic: msg.topic,\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-behavior'\n  };\n  return [null, msg];\n}\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 40,
+        "wires": [
+            [
+                "fn_value"
+            ],
+            [
+                "link_out_spoof"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_spoof",
+        "type": "link out",
+        "z": "tab_behavior",
+        "name": "spoofing event",
+        "mode": "link",
+        "links": [
+            "link_in_detection"
+        ],
+        "x": 685,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "link_in_detection",
+        "type": "link in",
+        "z": "tab_detection",
+        "name": "security events",
+        "links": [
+            "link_out_invalid",
+            "link_out_unauth",
+            "link_out_blocked",
+            "link_out_rate_anom",
+            "link_out_value_anom",
+            "link_out_spoof"
+        ],
+        "x": 75,
+        "y": 100,
+        "wires": [
+            [
+                "fn_enrich"
+            ]
+        ]
+    },
+    {
+        "id": "fn_enrich",
+        "type": "function",
+        "z": "tab_detection",
+        "name": "Enrich + ID",
+        "func": "const e = msg.payload;\ne.event_id = e.event_id || ('EVT-' + Math.random().toString(16).slice(2, 10).toUpperCase());\ne.source = e.source || 'node-red-detection-engine';\ne.status = e.status || 'OPEN';\ne.timestamp = e.timestamp || new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z');\nmsg.payload = e;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 100,
+        "wires": [
+            [
+                "link_out_to_corr"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_to_corr",
+        "type": "link out",
+        "z": "tab_detection",
+        "name": "to correlation",
+        "mode": "link",
+        "links": [
+            "link_in_correlation"
+        ],
+        "x": 435,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "link_in_correlation",
+        "type": "link in",
+        "z": "tab_correlation",
+        "name": "from detection",
+        "links": [
+            "link_out_to_corr"
+        ],
+        "x": 55,
+        "y": 100,
+        "wires": [
+            [
+                "fn_correlate"
+            ]
+        ]
+    },
+    {
+        "id": "fn_correlate",
+        "type": "function",
+        "z": "tab_correlation",
+        "name": "Event Correlation",
+        "func": "const e = msg.payload;\nconst windowMs = 60000;\nconst now = Date.now();\n\n// Skip if this is already a correlation event (prevent loops)\nif (e.event_type === 'CORRELATED_SECURITY_INCIDENT') {\n  return msg;\n}\n\nlet recent = context.get('recent_events') || [];\nrecent.push({ ...e, _ts: now });\nrecent = recent.filter(x => now - x._ts < windowMs);\nif (recent.length > 100) recent = recent.slice(-50);\ncontext.set('recent_events', recent);\n\nconst sameDev = recent.filter(x => x.device_id === e.device_id);\nconst types = [...new Set(sameDev.map(x => x.event_type))];\n\n// Only correlate once per (device, 30s window)\nconst lastCorrKey = 'last_corr_' + e.device_id;\nconst lastCorr = context.get(lastCorrKey) || 0;\n\nif (types.length >= 3 && (now - lastCorr) > 30000) {\n  context.set(lastCorrKey, now);\n\n  const corrId = 'CORR-' + Math.random().toString(16).slice(2, 8).toUpperCase();\n  const related = sameDev.map(x => x.event_id).filter(Boolean);\n\n  const correlatedEvent = {\n    event_type: 'CORRELATED_SECURITY_INCIDENT',\n    severity: 'CRITICAL',\n    risk_score: 40,\n    description: 'Correlated incident for ' + e.device_id + ': ' + types.join(', '),\n    device_id: e.device_id,\n    correlation_id: corrId,\n    related_event_ids: related.join(','),\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-correlation',\n    status: 'OPEN'\n  };\n\n  // Send correlated event as a SEPARATE message through the SAME output\n  node.send({ payload: correlatedEvent });\n}\n\n// Pass original event through\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 100,
+        "wires": [
+            [
+                "link_out_to_risk"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_to_risk",
+        "type": "link out",
+        "z": "tab_correlation",
+        "name": "to risk",
+        "mode": "link",
+        "links": [
+            "link_in_risk"
+        ],
+        "x": 435,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "link_in_risk",
+        "type": "link in",
+        "z": "tab_risk",
+        "name": "from correlation",
+        "links": [
+            "link_out_to_risk"
+        ],
+        "x": 55,
+        "y": 100,
+        "wires": [
+            [
+                "fn_risk"
+            ]
+        ]
+    },
+    {
+        "id": "fn_risk",
+        "type": "function",
+        "z": "tab_risk",
+        "name": "Risk Scoring Engine",
+        "func": "const contrib = {\n  'UNAUTHORIZED_DEVICE': 20,\n  'AUTHENTICATION_ANOMALY': 15,\n  'MESSAGE_RATE_ANOMALY': 25,\n  'TOPIC_ABUSE': 25,\n  'SENSOR_VALUE_ANOMALY': 15,\n  'DEVICE_SPOOFING': 30,\n  'SCHEMA_VALIDATION_FAILURE': 10,\n  'CORRELATED_SECURITY_INCIDENT': 40,\n  'POST_ISOLATION_BLOCKED': 0\n};\nconst e = msg.payload;\nconst add = contrib[e.event_type] !== undefined ? contrib[e.event_type] : (e.risk_score || 10);\nconst id = e.device_id || 'unknown';\n\n// Prevent rapid double-count of identical type within short window\nlet last = context.get('last_contrib') || {};\nconst key = id + ':' + e.event_type;\nconst now = Date.now();\nif (last[key] && (now - last[key]) < 5000 && e.event_type !== 'CORRELATED_SECURITY_INCIDENT') {\n  // skip additive for same type within 5s\n} else {\n  let scores = global.get('device_scores') || {};\n  scores[id] = Math.min(100, (scores[id] || 0) + add);\n  global.set('device_scores', scores);\n  last[key] = now;\n  context.set('last_contrib', last);\n}\n\nconst scores = global.get('device_scores') || {};\ne.risk_score = scores[id] || add;\nif (e.risk_score >= 80) e.severity = 'CRITICAL';\nelse if (e.risk_score >= 60) e.severity = 'HIGH';\nelse if (e.risk_score >= 30) e.severity = 'MEDIUM';\nelse e.severity = 'LOW';\n\nmsg.payload = e;\nmsg.device_risk = e.risk_score;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "link_out_to_resp"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_to_resp",
+        "type": "link out",
+        "z": "tab_risk",
+        "name": "to response",
+        "mode": "link",
+        "links": [
+            "link_in_response"
+        ],
+        "x": 445,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "link_in_response",
+        "type": "link in",
+        "z": "tab_response",
+        "name": "from risk",
+        "links": [
+            "link_out_to_resp"
+        ],
+        "x": 55,
+        "y": 100,
+        "wires": [
+            [
+                "fn_response"
+            ]
+        ]
+    },
+    {
+        "id": "fn_response",
+        "type": "function",
+        "z": "tab_response",
+        "name": "Response Policy",
+        "func": "const e = msg.payload;\nconst score = e.risk_score || 0;\nlet action = 'LOG';\n\nif (score >= 80) {\n  action = 'ISOLATE';\n  e.severity = 'CRITICAL';\n\n  let isolated = global.get('isolated_devices') || {};\n  const alreadyIsolated = Boolean(isolated[e.device_id]);\n\n  if (!alreadyIsolated) {\n    // First time reaching CRITICAL — isolate + create incident\n    isolated[e.device_id] = {\n      reason: e.event_type,\n      risk: score,\n      ts: e.timestamp,\n      event_id: e.event_id\n    };\n    global.set('isolated_devices', isolated);\n\n    // Update registry status\n    let reg = global.get('device_registry') || {};\n    if (reg[e.device_id]) {\n      reg[e.device_id].status = 'ISOLATED';\n      reg[e.device_id].risk_score = score;\n    }\n    global.set('device_registry', reg);\n\n    // Create ONE incident\n    let incidents = global.get('incidents') || [];\n    const inc = {\n      incident_id: 'INC-' + Math.random().toString(16).slice(2, 6).toUpperCase(),\n      device_id: e.device_id,\n      attack_type: e.event_type,\n      risk_score: score,\n      action: 'ISOLATED',\n      status: 'CONTAINED',\n      created_at: e.timestamp,\n      correlation_id: e.correlation_id || null\n    };\n    incidents.push(inc);\n    if (incidents.length > 200) incidents = incidents.slice(-100);\n    global.set('incidents', incidents);\n    e.incident_id = inc.incident_id;\n  } else {\n    // Already isolated — do NOT create another incident\n    e.incident_id = null;\n  }\n} else if (score >= 60) {\n  action = 'ALERT_ENHANCED_MONITORING';\n  let reg = global.get('device_registry') || {};\n  if (reg[e.device_id]) reg[e.device_id].status = 'SUSPICIOUS';\n  global.set('device_registry', reg);\n} else if (score >= 30) {\n  action = 'WARNING';\n}\n\ne.action = action;\n\n// Store event in global list for dashboard\nlet events = global.get('security_events') || [];\nevents.push(e);\nif (events.length > 500) events = events.slice(-300);\nglobal.set('security_events', events);\n\nmsg.payload = e;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 100,
+        "wires": [
+            [
+                "link_out_to_db_events",
+                "link_out_to_dash"
+            ]
+        ]
+    },
+    {
+        "id": "link_out_to_db_events",
+        "type": "link out",
+        "z": "tab_response",
+        "name": "to db",
+        "mode": "link",
+        "links": [
+            "link_in_db_events"
+        ],
+        "x": 465,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "link_out_to_dash",
+        "type": "link out",
+        "z": "tab_response",
+        "name": "to dashboard",
+        "mode": "link",
+        "links": [
+            "link_in_dash_events"
+        ],
+        "x": 465,
+        "y": 130,
+        "wires": []
+    },
+    {
+        "id": "link_in_db_telemetry",
+        "type": "link in",
+        "z": "tab_database",
+        "name": "telemetry",
+        "links": [
+            "link_out_normal"
+        ],
+        "x": 55,
+        "y": 60,
+        "wires": [
+            [
+                "dbg_tel",
+                "fn_persist_tel"
+            ]
+        ]
+    },
+    {
+        "id": "link_in_db_events",
+        "type": "link in",
+        "z": "tab_database",
+        "name": "events",
+        "links": [
+            "link_out_to_db_events"
+        ],
+        "x": 55,
+        "y": 140,
+        "wires": [
+            [
+                "dbg_evt",
+                "fn_persist_event"
+            ]
+        ]
+    },
+    {
+        "id": "dbg_tel",
+        "type": "debug",
+        "z": "tab_database",
+        "name": "Telemetry OK",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.device_id",
+        "statusType": "msg",
+        "x": 250,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "dbg_evt",
+        "type": "debug",
+        "z": "tab_database",
+        "name": "Security Event",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload.event_type",
+        "statusType": "msg",
+        "x": 260,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "comment_db",
+        "type": "comment",
+        "z": "tab_database",
+        "name": "SQLite persistence: use node-red-node-sqlite in production path; global context used for demo state",
+        "info": "Install node-red-node-sqlite and wire INSERT statements to schema.sql tables for durable storage.",
+        "x": 360,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "fn_persist_event",
+        "type": "function",
+        "z": "tab_database",
+        "name": "Persist Event (JSONL)",
+        "func": "const fs = global.get('fs');\nconst path = '/data/database/events.jsonl';\ntry {\n  fs.appendFileSync(path, JSON.stringify(msg.payload) + '\\n');\n} catch (e) {\n  node.warn('persist event: ' + e.message);\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fn_persist_tel",
+        "type": "function",
+        "z": "tab_database",
+        "name": "Persist Telemetry (JSONL)",
+        "func": "const fs = global.get('fs');\nconst path = '/data/database/telemetry.jsonl';\ntry {\n  fs.appendFileSync(path, JSON.stringify(msg.payload) + '\\n');\n} catch (e) {\n  node.warn('persist telemetry: ' + e.message);\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "comment_sqlite_howto",
+        "type": "comment",
+        "z": "tab_database",
+        "name": "SQLite: install node-red-node-sqlite → INSERT into schema tables (see docs/12-database.md)",
+        "info": "After palette install, add sqlite nodes with dbname=/data/database/iot_sentinel.db and SQL from docs/12-database.md",
+        "x": 400,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "link_in_dash_events",
+        "type": "link in",
+        "z": "tab_dashboard",
+        "name": "events for UI",
+        "links": [
+            "link_out_to_dash"
+        ],
+        "x": 55,
+        "y": 80,
+        "wires": [
+            [
+                "fn_dash_update"
+            ]
+        ]
+    },
+    {
+        "id": "fn_dash_update",
+        "type": "function",
+        "z": "tab_dashboard",
+        "name": "Update Dashboard State",
+        "func": "// ═══════════════════════════════════════════════════════════════\n// IoT Sentinel SOC - Dashboard State Builder\n// Computes all data needed by the professional dashboard widgets\n// ═══════════════════════════════════════════════════════════════\n\nconst reg = global.get('device_registry') || {};\nconst isolated = global.get('isolated_devices') || {};\nconst events = global.get('security_events') || [];\nconst incidents = global.get('incidents') || [];\nconst scores = global.get('device_scores') || {};\n\n// ── Devices ────────────────────────────────────────────────────\nconst devices = Object.keys(reg).length ? Object.values(reg) : [\n  { device_id: 'TEMP-001', device_type: 'temperature', status: 'ACTIVE', risk_score: 0, last_seen: '—' },\n  { device_id: 'HUM-001', device_type: 'humidity', status: 'ACTIVE', risk_score: 0, last_seen: '—' },\n  { device_id: 'MOTION-001', device_type: 'motion', status: 'ACTIVE', risk_score: 0, last_seen: '—' },\n  { device_id: 'DOOR-001', device_type: 'door', status: 'ACTIVE', risk_score: 0, last_seen: '—' },\n  { device_id: 'CAM-001', device_type: 'camera', status: 'ACTIVE', risk_score: 0, last_seen: '—' },\n  { device_id: 'LIGHT-001', device_type: 'light', status: 'ACTIVE', risk_score: 0, last_seen: '—' }\n];\n\nObject.keys(isolated).forEach(id => {\n  const d = devices.find(x => x.device_id === id);\n  if (d) { d.status = 'ISOLATED'; d.risk_score = isolated[id].risk || d.risk_score; }\n});\ndevices.forEach(d => { if (scores[d.device_id] !== undefined) d.risk_score = scores[d.device_id]; });\n\n// ── Statistics ─────────────────────────────────────────────────\nconst totalDevices = 6;\nconst activeDevices = devices.filter(d => d.status === 'ACTIVE').length;\nconst suspiciousDevices = devices.filter(d => d.status === 'SUSPICIOUS').length;\nconst isolatedDevices = Object.keys(isolated).length;\nconst totalEvents = events.length;\nconst openIncidents = incidents.filter(i => i.status !== 'RESOLVED').length;\n\n// Severity counts\nconst sevCounts = { CRITICAL: 0, HIGH: 0, MEDIUM: 0, LOW: 0 };\nevents.forEach(e => { if (sevCounts[e.severity] !== undefined) sevCounts[e.severity]++; });\n\n// Risk bands\nconst riskBuckets = [0, 0, 0, 0];\nevents.forEach(e => {\n  const r = e.risk_score || 0;\n  if (r >= 80) riskBuckets[3]++;\n  else if (r >= 60) riskBuckets[2]++;\n  else if (r >= 30) riskBuckets[1]++;\n  else riskBuckets[0]++;\n});\n\n// Overall system threat level (based on highest active risk)\nconst maxDeviceRisk = Math.max(0, ...devices.map(d => d.risk_score || 0));\nlet systemThreat = 'LOW';\nif (isolatedDevices > 0 || maxDeviceRisk >= 80) systemThreat = 'CRITICAL';\nelse if (maxDeviceRisk >= 60) systemThreat = 'HIGH';\nelse if (maxDeviceRisk >= 30) systemThreat = 'MEDIUM';\n\n// ── Threat Types (donut data) ──────────────────────────────────\nconst typeCounts = {};\nevents.forEach(e => { typeCounts[e.event_type] = (typeCounts[e.event_type] || 0) + 1; });\nconst threatTypes = Object.entries(typeCounts)\n  .map(([type, count]) => ({ type, count }))\n  .sort((a, b) => b.count - a.count);\n\n// ── Top Targeted Devices ───────────────────────────────────────\nconst deviceHits = {};\nevents.forEach(e => {\n  if (e.device_id) deviceHits[e.device_id] = (deviceHits[e.device_id] || 0) + 1;\n});\nconst topDevices = Object.entries(deviceHits)\n  .map(([device, hits]) => ({ device, hits }))\n  .sort((a, b) => b.hits - a.hits)\n  .slice(0, 5);\n\n// ── Activity Timeline (last 60 minutes, bucketed per minute) ───\nconst now = Date.now();\nconst buckets = {};\nfor (let i = 59; i >= 0; i--) {\n  const t = new Date(now - i * 60000);\n  const key = t.toISOString().slice(11, 16);  // HH:MM\n  buckets[key] = 0;\n}\nevents.forEach(e => {\n  if (!e.timestamp) return;\n  const t = new Date(e.timestamp).getTime();\n  if (now - t > 3600000) return;\n  const key = new Date(t).toISOString().slice(11, 16);\n  if (buckets[key] !== undefined) buckets[key]++;\n});\nconst activitySeries = Object.entries(buckets).map(([time, count]) => ({ time, count }));\n\n// ── Event rate (events in last 60s) ────────────────────────────\nconst recentEvents = events.filter(e => {\n  if (!e.timestamp) return false;\n  return now - new Date(e.timestamp).getTime() < 60000;\n});\nconst eventRate = recentEvents.length;\n\n// ── Build payload for widgets ──────────────────────────────────\nmsg.stats = {\n  totalDevices, activeDevices, suspiciousDevices, isolatedDevices,\n  totalEvents, openIncidents,\n  criticalAlerts: sevCounts.CRITICAL,\n  systemThreat,\n  eventRate,\n  maxDeviceRisk\n};\n\nmsg.severity = sevCounts;\nmsg.riskBuckets = riskBuckets;\nmsg.threatTypes = threatTypes;\nmsg.topDevices = topDevices;\nmsg.activitySeries = activitySeries;\nmsg.devices = devices;\nmsg.events = events.slice(-50).reverse();\nmsg.recentEvents = events.slice(-100).reverse();\nmsg.incidents = incidents.slice(-20).reverse();\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 260,
+        "y": 80,
+        "wires": [
+            [
+                "d116574c9db6c282",
+                "3283554ffd355ea7",
+                "682ebe1457216305",
+                "1aca5d9478318560",
+                "db131d10dfb8979e",
+                "92a11d1ec9c07baa",
+                "03b13ac9e469eedc",
+                "254a0b37c9aeb7de",
+                "a1fcce7406aa8215"
+            ]
+        ]
+    },
+    {
+        "id": "inject_refresh",
+        "type": "inject",
+        "z": "tab_dashboard",
+        "name": "Refresh 5s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 180,
+        "wires": [
+            [
+                "fn_dash_update"
+            ]
+        ]
+    },
+    {
+        "id": "d116574c9db6c282",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "ace3748f8f71164b",
+        "name": "KPI Cards",
+        "order": 1,
+        "width": "12",
+        "height": "3",
+        "format": "<div style=\"display:grid; grid-template-columns: repeat(5,1fr); gap:10px; padding:12px; background:#0a0e17;\">\n    <!-- Devices -->\n    <div\n        style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; border-left:3px solid #06b6d4;\">\n        <div style=\"color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">Total Devices</div>\n        <div\n            style=\"color:#06b6d4; font-size:28px; font-weight:800; font-family:'JetBrains Mono',monospace; margin-top:4px;\">\n            {{msg.stats.totalDevices}}</div>\n        <div style=\"color:#4b5563; font-size:10px; margin-top:2px;\">Registered</div>\n    </div>\n    <!-- Active -->\n    <div\n        style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; border-left:3px solid #10b981;\">\n        <div style=\"color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">Active</div>\n        <div\n            style=\"color:#10b981; font-size:28px; font-weight:800; font-family:'JetBrains Mono',monospace; margin-top:4px;\">\n            {{msg.stats.activeDevices}}</div>\n        <div style=\"color:#4b5563; font-size:10px; margin-top:2px;\">● Operational</div>\n    </div>\n    <!-- Suspicious -->\n    <div\n        style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; border-left:3px solid #f59e0b;\">\n        <div style=\"color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">Suspicious</div>\n        <div\n            style=\"color:#f59e0b; font-size:28px; font-weight:800; font-family:'JetBrains Mono',monospace; margin-top:4px;\">\n            {{msg.stats.suspiciousDevices}}</div>\n        <div style=\"color:#4b5563; font-size:10px; margin-top:2px;\">▲ Under watch</div>\n    </div>\n    <!-- Isolated -->\n    <div\n        style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; border-left:3px solid #ef4444;\">\n        <div style=\"color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">Isolated</div>\n        <div\n            style=\"color:#ef4444; font-size:28px; font-weight:800; font-family:'JetBrains Mono',monospace; margin-top:4px;\">\n            {{msg.stats.isolatedDevices}}</div>\n        <div style=\"color:#4b5563; font-size:10px; margin-top:2px;\">■ Contained</div>\n    </div>\n    <!-- Events -->\n    <div\n        style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; border-left:3px solid #a855f7;\">\n        <div style=\"color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">Events</div>\n        <div\n            style=\"color:#a855f7; font-size:28px; font-weight:800; font-family:'JetBrains Mono',monospace; margin-top:4px;\">\n            {{msg.stats.totalEvents}}</div>\n        <div style=\"color:#4b5563; font-size:10px; margin-top:2px;\">{{msg.stats.eventRate}}/min</div>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 630,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "db131d10dfb8979e",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "90b84101aa5c89cd",
+        "name": "Top Devices",
+        "order": 5,
+        "width": "6",
+        "height": "6",
+        "format": "<div style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; margin:12px;\">\n    <div style=\"color:#e5e7eb; font-size:13px; font-weight:600; margin-bottom:14px;\">🔥 Top Targeted Devices</div>\n    <div ng-repeat=\"d in msg.topDevices\" style=\"margin-bottom:12px;\">\n        <div style=\"display:flex; justify-content:space-between; margin-bottom:4px;\">\n            <span style=\"color:#e5e7eb; font-size:12px; font-family:monospace;\">{{d.device}}</span>\n            <span style=\"color:#9ca3af; font-size:11px;\">{{d.hits}} events</span>\n        </div>\n        <div style=\"background:#0a0e17; height:6px; border-radius:3px; overflow:hidden;\">\n            <div ng-style=\"{'width': (d.hits / msg.topDevices[0].hits * 100) + '%'}\"\n                style=\"height:100%; background:linear-gradient(90deg,#06b6d4,#ef4444);\"></div>\n        </div>\n    </div>\n    <div ng-if=\"!msg.topDevices.length\" style=\"color:#6b7280; font-size:11px; padding:30px 0; text-align:center;\">No\n        targeted devices yet</div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 570,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "682ebe1457216305",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "dacf5c3e0877289d",
+        "name": "Activity Chart",
+        "order": 3,
+        "width": "12",
+        "height": "5",
+        "format": "<div style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; margin:12px;\">\n    <div style=\"display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;\">\n        <div style=\"color:#e5e7eb; font-size:13px; font-weight:600;\">📈 Threat Activity — Last 60 Minutes</div>\n        <div style=\"color:#6b7280; font-size:11px;\">events/minute</div>\n    </div>\n    <canvas id=\"activityChart\" height=\"90\"></canvas>\n</div>\n<script>\n    (function() {\n  const canvas = document.getElementById('activityChart');\n  if (!canvas || !msg.activitySeries) return;\n  const ctx = canvas.getContext('2d');\n  const dpr = window.devicePixelRatio || 1;\n  const rect = canvas.getBoundingClientRect();\n  canvas.width = rect.width * dpr;\n  canvas.height = rect.height * dpr;\n  ctx.scale(dpr, dpr);\n  \n  const W = rect.width, H = rect.height;\n  const data = msg.activitySeries;\n  const maxVal = Math.max(1, ...data.map(d => d.count));\n  const barW = W / data.length;\n  \n  // Background grid\n  ctx.strokeStyle = '#1f2937';\n  ctx.lineWidth = 1;\n  for (let i = 0; i <= 4; i++) {\n    const y = (H / 4) * i;\n    ctx.beginPath();\n    ctx.moveTo(0, y);\n    ctx.lineTo(W, y);\n    ctx.stroke();\n  }\n  \n  // Area fill\n  ctx.beginPath();\n  ctx.moveTo(0, H);\n  data.forEach((d, i) => {\n    const x = i * barW + barW/2;\n    const y = H - (d.count / maxVal) * (H - 10);\n    ctx.lineTo(x, y);\n  });\n  ctx.lineTo(W, H);\n  ctx.closePath();\n  const grad = ctx.createLinearGradient(0, 0, 0, H);\n  grad.addColorStop(0, 'rgba(6, 182, 212, 0.4)');\n  grad.addColorStop(1, 'rgba(6, 182, 212, 0)');\n  ctx.fillStyle = grad;\n  ctx.fill();\n  \n  // Line\n  ctx.beginPath();\n  data.forEach((d, i) => {\n    const x = i * barW + barW/2;\n    const y = H - (d.count / maxVal) * (H - 10);\n    if (i === 0) ctx.moveTo(x, y);\n    else ctx.lineTo(x, y);\n  });\n  ctx.strokeStyle = '#06b6d4';\n  ctx.lineWidth = 2;\n  ctx.stroke();\n  \n  // Points\n  data.forEach((d, i) => {\n    if (d.count === 0) return;\n    const x = i * barW + barW/2;\n    const y = H - (d.count / maxVal) * (H - 10);\n    ctx.beginPath();\n    ctx.arc(x, y, 2.5, 0, Math.PI*2);\n    ctx.fillStyle = '#06b6d4';\n    ctx.fill();\n  });\n  \n  // Y-axis labels\n  ctx.fillStyle = '#6b7280';\n  ctx.font = '10px monospace';\n  ctx.fillText(maxVal.toString(), 4, 12);\n  ctx.fillText('0', 4, H - 2);\n})();\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 650,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3283554ffd355ea7",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "df0f2972a23f020e",
+        "name": "SOC Header",
+        "order": 0,
+        "width": "12",
+        "height": "3",
+        "format": "<div\n    style=\"background: linear-gradient(135deg,#0a0e17 0%,#141821 100%); padding:14px 20px; border-bottom:2px solid #06b6d4; display:flex; justify-content:space-between; align-items:center; font-family:Inter,system-ui,sans-serif;\">\n    <div style=\"display:flex; align-items:center; gap:12px;\">\n        <div\n            style=\"width:36px; height:36px; background:#06b6d4; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:20px;\">\n            🛡️</div>\n        <div>\n            <div style=\"color:#e5e7eb; font-size:16px; font-weight:700; letter-spacing:0.5px;\">IoT SENTINEL — SOC</div>\n            <div style=\"color:#6b7280; font-size:11px;\">Security Operations Center · Live Monitoring</div>\n        </div>\n    </div>\n    <div style=\"display:flex; align-items:center; gap:24px;\">\n        <div style=\"display:flex; align-items:center; gap:8px;\">\n            <div style=\"width:10px; height:10px; background:#10b981; border-radius:50%; animation:pulse 2s infinite;\">\n            </div>\n            <span style=\"color:#10b981; font-size:12px; font-weight:600;\">LIVE</span>\n        </div>\n        <div style=\"text-align:right;\">\n            <div style=\"color:#6b7280; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">System Threat\n                Level</div>\n            <div ng-style=\"{'color': msg.stats.systemThreat==='CRITICAL'?'#ef4444':(msg.stats.systemThreat==='HIGH'?'#f97316':(msg.stats.systemThreat==='MEDIUM'?'#f59e0b':'#10b981'))}\"\n                style=\"font-size:18px; font-weight:800; letter-spacing:2px;\">{{msg.stats.systemThreat || 'LOW'}}</div>\n        </div>\n    </div>\n</div>\n<style>\n    @keyframes pulse {\n\n        0%,\n        100% {\n            opacity: 1\n        }\n\n        50% {\n            opacity: 0.4\n        }\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 630,
+        "y": 40,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1aca5d9478318560",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "783723ba99bac190",
+        "name": "Severity Bar",
+        "order": 2,
+        "width": "12",
+        "height": "2",
+        "format": "<div style=\"display:grid; grid-template-columns: repeat(4,1fr); gap:10px; padding:12px; background:#0a0e17;\">\n    <div\n        style=\"background:linear-gradient(90deg,#7f1d1d,#450a0a); border:1px solid #ef4444; border-radius:6px; padding:12px;\">\n        <div style=\"color:#fca5a5; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">🔴 Critical</div>\n        <div style=\"color:#fff; font-size:24px; font-weight:800; font-family:'JetBrains Mono',monospace;\">\n            {{msg.severity.CRITICAL}}</div>\n    </div>\n    <div\n        style=\"background:linear-gradient(90deg,#7c2d12,#431407); border:1px solid #f97316; border-radius:6px; padding:12px;\">\n        <div style=\"color:#fdba74; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">🟠 High</div>\n        <div style=\"color:#fff; font-size:24px; font-weight:800; font-family:'JetBrains Mono',monospace;\">\n            {{msg.severity.HIGH}}</div>\n    </div>\n    <div\n        style=\"background:linear-gradient(90deg,#78350f,#422006); border:1px solid #f59e0b; border-radius:6px; padding:12px;\">\n        <div style=\"color:#fcd34d; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">🟡 Medium</div>\n        <div style=\"color:#fff; font-size:24px; font-weight:800; font-family:'JetBrains Mono',monospace;\">\n            {{msg.severity.MEDIUM}}</div>\n    </div>\n    <div\n        style=\"background:linear-gradient(90deg,#064e3b,#022c22); border:1px solid #10b981; border-radius:6px; padding:12px;\">\n        <div style=\"color:#6ee7b7; font-size:10px; text-transform:uppercase; letter-spacing:1px;\">🟢 Low</div>\n        <div style=\"color:#fff; font-size:24px; font-weight:800; font-family:'JetBrains Mono',monospace;\">\n            {{msg.severity.LOW}}</div>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 650,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92a11d1ec9c07baa",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "a91002ec36f5e0f4",
+        "name": "Threat Donut",
+        "order": 4,
+        "width": "6",
+        "height": "6",
+        "format": "<div style=\"background:#141821; border:1px solid #1f2937; border-radius:8px; padding:14px; margin:12px;\">\n    <div style=\"color:#e5e7eb; font-size:13px; font-weight:600; margin-bottom:10px;\">🎯 Threat Type Distribution</div>\n    <div style=\"display:flex; align-items:center; gap:16px;\">\n        <canvas id=\"donutChart\" width=\"160\" height=\"160\" style=\"flex-shrink:0;\"></canvas>\n        <div style=\"flex:1; max-height:180px; overflow-y:auto;\">\n            <div ng-repeat=\"t in msg.threatTypes\"\n                style=\"display:flex; align-items:center; gap:8px; padding:4px 0; border-bottom:1px solid #1f2937;\">\n                <div ng-style=\"{'background': ['#ef4444','#f97316','#f59e0b','#06b6d4','#a855f7','#10b981'][$index % 6]}\"\n                    style=\"width:10px; height:10px; border-radius:2px; flex-shrink:0;\"></div>\n                <div\n                    style=\"color:#9ca3af; font-size:11px; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\">\n                    {{t.type}}</div>\n                <div style=\"color:#e5e7eb; font-size:12px; font-weight:700; font-family:monospace;\">{{t.count}}</div>\n            </div>\n            <div ng-if=\"!msg.threatTypes.length\"\n                style=\"color:#6b7280; font-size:11px; padding:20px 0; text-align:center;\">No threats yet</div>\n        </div>\n    </div>\n</div>\n<script>\n    (function() {\n  const canvas = document.getElementById('donutChart');\n  if (!canvas || !msg.threatTypes || !msg.threatTypes.length) return;\n  const ctx = canvas.getContext('2d');\n  const cx = 80, cy = 80, r = 60, innerR = 40;\n  const colors = ['#ef4444','#f97316','#f59e0b','#06b6d4','#a855f7','#10b981'];\n  const total = msg.threatTypes.reduce((s,t) => s + t.count, 0);\n  let startAngle = -Math.PI/2;\n  \n  msg.threatTypes.forEach((t, i) => {\n    const sliceAngle = (t.count / total) * Math.PI * 2;\n    ctx.beginPath();\n    ctx.arc(cx, cy, r, startAngle, startAngle + sliceAngle);\n    ctx.arc(cx, cy, innerR, startAngle + sliceAngle, startAngle, true);\n    ctx.closePath();\n    ctx.fillStyle = colors[i % colors.length];\n    ctx.fill();\n    startAngle += sliceAngle;\n  });\n  \n  // Center text\n  ctx.fillStyle = '#e5e7eb';\n  ctx.font = 'bold 20px monospace';\n  ctx.textAlign = 'center';\n  ctx.textBaseline = 'middle';\n  ctx.fillText(total.toString(), cx, cy - 5);\n  ctx.fillStyle = '#6b7280';\n  ctx.font = '10px monospace';\n  ctx.fillText('TOTAL', cx, cy + 12);\n})();\n</script>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 630,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "254a0b37c9aeb7de",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "b6f94d819c3ceec2",
+        "name": "Device Registry",
+        "order": 7,
+        "width": "12",
+        "height": "6",
+        "format": "<div style=\"background:#0a0e17; border:1px solid #1f2937; border-radius:8px; margin:12px; overflow:hidden;\">\n    <div style=\"background:#141821; padding:10px 14px; border-bottom:1px solid #1f2937;\">\n        <div style=\"color:#e5e7eb; font-size:13px; font-weight:600;\">📋 Device Registry</div>\n    </div>\n    <table style=\"width:100%; border-collapse:collapse; font-size:11px;\">\n        <thead>\n            <tr\n                style=\"background:#0f1319; color:#6b7280; text-transform:uppercase; font-size:10px; letter-spacing:1px;\">\n                <th style=\"padding:8px 10px; text-align:left;\">Device ID</th>\n                <th style=\"padding:8px 10px; text-align:left;\">Type</th>\n                <th style=\"padding:8px 10px; text-align:center;\">Status</th>\n                <th style=\"padding:8px 10px; text-align:left;\">Risk Score</th>\n                <th style=\"padding:8px 10px; text-align:right;\">Last Seen</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr ng-repeat=\"d in msg.devices\" style=\"border-bottom:1px solid #1f2937;\">\n                <td style=\"padding:8px 10px; color:#e5e7eb; font-family:'JetBrains Mono',monospace; font-weight:600;\">\n                    {{d.device_id}}</td>\n                <td style=\"padding:8px 10px; color:#9ca3af;\">{{d.device_type}}</td>\n                <td style=\"padding:8px 10px; text-align:center;\">\n                    <span ng-style=\"{\n            'color': d.status==='ISOLATED'?'#ef4444':(d.status==='SUSPICIOUS'?'#f59e0b':'#10b981'),\n            'background': d.status==='ISOLATED'?'rgba(239,68,68,0.15)':(d.status==='SUSPICIOUS'?'rgba(245,158,11,0.15)':'rgba(16,185,129,0.15)'),\n            'border': '1px solid ' + (d.status==='ISOLATED'?'#ef4444':(d.status==='SUSPICIOUS'?'#f59e0b':'#10b981'))\n          }\" style=\"padding:2px 10px; border-radius:3px; font-size:10px; font-weight:700;\">{{d.status}}</span>\n                </td>\n                <td style=\"padding:8px 10px;\">\n                    <div style=\"display:flex; align-items:center; gap:8px;\">\n                        <div\n                            style=\"flex:1; max-width:120px; background:#1f2937; height:6px; border-radius:3px; overflow:hidden;\">\n                            <div ng-style=\"{\n                'width': d.risk_score + '%',\n                'background': d.risk_score>=80?'#ef4444':(d.risk_score>=60?'#f97316':(d.risk_score>=30?'#f59e0b':'#10b981'))\n              }\" style=\"height:100%;\"></div>\n                        </div>\n                        <span style=\"color:#9ca3af; font-family:monospace; font-weight:700; min-width:30px;\">{{d.risk_score}}</span>\n                    </div>\n                </td>\n                <td style=\"padding:8px 10px; text-align:right; color:#6b7280; font-family:monospace;\">{{d.last_seen}}\n                </td>\n            </tr>\n        </tbody>\n    </table>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 500,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "03b13ac9e469eedc",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "9248c44eb8e29c26",
+        "name": "Live Feed",
+        "order": 6,
+        "width": "12",
+        "height": "7",
+        "format": "<div style=\"background:#0a0e17; border:1px solid #1f2937; border-radius:8px; margin:12px; overflow:hidden;\">\n    <div\n        style=\"background:#141821; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #1f2937;\">\n        <div style=\"color:#e5e7eb; font-size:13px; font-weight:600; display:flex; align-items:center; gap:8px;\">\n            <span style=\"width:8px; height:8px; background:#ef4444; border-radius:50%; animation:pulse 1.5s infinite;\"></span>\n            LIVE THREAT FEED\n        </div>\n        <div style=\"color:#6b7280; font-size:11px; font-family:monospace;\">{{msg.events.length}} events</div>\n    </div>\n    <table style=\"width:100%; border-collapse:collapse; font-family:'JetBrains Mono',monospace; font-size:11px;\">\n        <thead>\n            <tr\n                style=\"background:#0f1319; color:#6b7280; text-transform:uppercase; font-size:10px; letter-spacing:1px;\">\n                <th style=\"padding:8px 10px; text-align:left;\">Time</th>\n                <th style=\"padding:8px 10px; text-align:left;\">Device</th>\n                <th style=\"padding:8px 10px; text-align:left;\">Threat</th>\n                <th style=\"padding:8px 10px; text-align:center;\">Severity</th>\n                <th style=\"padding:8px 10px; text-align:right;\">Risk</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr ng-repeat=\"e in msg.events | limitTo:20\" style=\"border-bottom:1px solid #1f2937;\">\n                <td style=\"padding:6px 10px; color:#6b7280;\">{{e.timestamp | date:'HH:mm:ss'}}</td>\n                <td style=\"padding:6px 10px; color:#e5e7eb;\">{{e.device_id}}</td>\n                <td style=\"padding:6px 10px; color:#9ca3af;\">{{e.event_type}}</td>\n                <td style=\"padding:6px 10px; text-align:center;\">\n                    <span ng-style=\"{\n            'background': e.severity==='CRITICAL'?'rgba(239,68,68,0.15)':(e.severity==='HIGH'?'rgba(249,115,22,0.15)':(e.severity==='MEDIUM'?'rgba(245,158,11,0.15)':'rgba(16,185,129,0.15)')),\n            'color': e.severity==='CRITICAL'?'#ef4444':(e.severity==='HIGH'?'#f97316':(e.severity==='MEDIUM'?'#f59e0b':'#10b981')),\n            'border': '1px solid ' + (e.severity==='CRITICAL'?'#ef4444':(e.severity==='HIGH'?'#f97316':(e.severity==='MEDIUM'?'#f59e0b':'#10b981')))\n          }\" style=\"padding:2px 8px; border-radius:3px; font-size:10px; font-weight:700;\">{{e.severity}}</span>\n                </td>\n                <td style=\"padding:6px 10px; text-align:right; color:#e5e7eb; font-weight:700;\">{{e.risk_score}}</td>\n            </tr>\n            <tr ng-if=\"!msg.events.length\">\n                <td colspan=\"5\" style=\"padding:40px; text-align:center; color:#6b7280;\">No security events yet —\n                    pipeline is monitoring</td>\n            </tr>\n        </tbody>\n    </table>\n</div>\n<style>\n    @keyframes pulse {\n\n        0%,\n        100% {\n            opacity: 1\n        }\n\n        50% {\n            opacity: 0.3\n        }\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 520,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a1fcce7406aa8215",
+        "type": "ui_template",
+        "z": "tab_dashboard",
+        "group": "a70daf1e9889ecf4",
+        "name": "Incidents",
+        "order": 8,
+        "width": "12",
+        "height": "5",
+        "format": "<div style=\"background:#0a0e17; border:1px solid #1f2937; border-radius:8px; margin:12px; overflow:hidden;\">\n    <div style=\"background:#141821; padding:10px 14px; border-bottom:1px solid #1f2937;\">\n        <div style=\"color:#e5e7eb; font-size:13px; font-weight:600;\">📂 Active Incidents</div>\n    </div>\n    <table style=\"width:100%; border-collapse:collapse; font-size:11px;\">\n        <thead>\n            <tr\n                style=\"background:#0f1319; color:#6b7280; text-transform:uppercase; font-size:10px; letter-spacing:1px;\">\n                <th style=\"padding:8px 10px; text-align:left;\">Incident ID</th>\n                <th style=\"padding:8px 10px; text-align:left;\">Device</th>\n                <th style=\"padding:8px 10px; text-align:left;\">Attack</th>\n                <th style=\"padding:8px 10px; text-align:center;\">Risk</th>\n                <th style=\"padding:8px 10px; text-align:center;\">Status</th>\n                <th style=\"padding:8px 10px; text-align:center;\">Action</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr ng-repeat=\"i in msg.incidents\" style=\"border-bottom:1px solid #1f2937;\">\n                <td style=\"padding:8px 10px; color:#06b6d4; font-family:monospace; font-weight:700;\">{{i.incident_id}}\n                </td>\n                <td style=\"padding:8px 10px; color:#e5e7eb; font-family:monospace;\">{{i.device_id}}</td>\n                <td style=\"padding:8px 10px; color:#9ca3af;\">{{i.attack_type}}</td>\n                <td style=\"padding:8px 10px; text-align:center; color:#ef4444; font-family:monospace; font-weight:700;\">\n                    {{i.risk_score}}</td>\n                <td style=\"padding:8px 10px; text-align:center;\">\n                    <span style=\"padding:2px 10px; border-radius:3px; font-size:10px; font-weight:700; background:rgba(6,182,212,0.15); color:#06b6d4; border:1px solid #06b6d4;\">{{i.status}}</span>\n                </td>\n                <td style=\"padding:8px 10px; text-align:center; color:#9ca3af; font-size:10px;\">{{i.action}}</td>\n            </tr>\n            <tr ng-if=\"!msg.incidents.length\">\n                <td colspan=\"6\" style=\"padding:40px; text-align:center; color:#6b7280;\">No incidents — system nominal\n                </td>\n            </tr>\n        </tbody>\n    </table>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 440,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "inject_list_isolated",
+        "type": "inject",
+        "z": "tab_admin",
+        "name": "List Isolated",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"action\":\"recover\",\"device_id\":\"TEMP-001\"}",
+        "payloadType": "json",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "fn_recover"
+            ]
+        ]
+    },
+    {
+        "id": "fn_recover",
+        "type": "function",
+        "z": "tab_admin",
+        "name": "Recovery Control",
+        "func": "const cmd = msg.payload;\nlet isolated = global.get('isolated_devices') || {};\nlet reg = global.get('device_registry') || {};\nlet scores = global.get('device_scores') || {};\n\nif (cmd === 'list') {\n  msg.payload = { isolated, registry: reg, scores };\n  return msg;\n}\n\n// Recover: msg.payload = { action: 'recover', device_id: 'TEMP-001' }\nif (cmd && cmd.action === 'recover' && cmd.device_id) {\n  const id = cmd.device_id;\n  delete isolated[id];\n  if (reg[id]) reg[id].status = 'ACTIVE';\n  scores[id] = 0;\n  global.set('isolated_devices', isolated);\n  global.set('device_registry', reg);\n  global.set('device_scores', scores);\n  msg.payload = {\n    event_type: 'DEVICE_RECOVERED',\n    severity: 'LOW',\n    risk_score: 0,\n    description: 'Device recovered from ISOLATED to ACTIVE: ' + id,\n    device_id: id,\n    action: 'RECOVER',\n    timestamp: new Date().toISOString().replace(/\\.\\d{3}Z$/, 'Z'),\n    source: 'node-red-admin',\n    status: 'RESOLVED'\n  };\n  // also push to events\n  let events = global.get('security_events') || [];\n  events.push(msg.payload);\n  global.set('security_events', events);\n  return msg;\n}\nmsg.payload = { error: 'unknown command' };\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "dbg_admin"
+            ]
+        ]
+    },
+    {
+        "id": "dbg_admin",
+        "type": "debug",
+        "z": "tab_admin",
+        "name": "Admin Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 530,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "comment_admin",
+        "type": "comment",
+        "z": "tab_admin",
+        "name": "Recover device: inject {\"action\":\"recover\",\"device_id\":\"TEMP-001\"}",
+        "info": "Use an inject node with JSON payload to recover an isolated device.",
+        "x": 280,
+        "y": 160,
+        "wires": []
+    }
+]

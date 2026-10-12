@@ -1,0 +1,46 @@
+# Secrets — NEVER commit
+.env
+broker/config/passwordfile
+certificates/**/*.key
+certificates/**/*.crt
+certificates/**/*.csr
+certificates/**/*.srl
+*.pem
+
+# Runtime data
+broker/data/*
+broker/log/*
+!broker/data/.gitkeep
+!broker/log/.gitkeep
+nodered/data/*
+!nodered/data/.gitkeep
+!nodered/data/flows.json
+database/*.db
+database/*.sqlite
+database/*.sqlite3
+database/*.jsonl
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Node-RED runtime
+nodered/.config.*.json
+nodered/.sessions.json
+
+# Test artifacts
+tests/results/*.json
+tests/results/*.md
+!tests/results/.gitkeep
+!tests/results/README.md
+
+# OS / Editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

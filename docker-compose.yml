@@ -1,0 +1,51 @@
+services:
+  mosquitto:
+    image: eclipse-mosquitto:2.0.18
+    container_name: iot-sentinel-mosquitto
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+      - "8883:8883"
+    volumes:
+      - ./broker/config/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./broker/config/aclfile:/mosquitto/config/aclfile:ro
+      - ./broker/config/passwordfile:/mosquitto/config/passwordfile:ro
+      - ./broker/data:/mosquitto/data
+      - ./broker/log:/mosquitto/log
+      - ./certificates:/mosquitto/certs:ro
+    networks:
+      - iot-sentinel-network
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 1883 || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  nodered:
+    image: nodered/node-red:3.1.9
+    container_name: iot-sentinel-nodered
+    restart: unless-stopped
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./nodered/data:/data
+      - ./database:/data/database
+    environment:
+      - TZ=UTC
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+    networks:
+      - iot-sentinel-network
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O - http://localhost:1880/ || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  iot-sentinel-network:
+    driver: bridge
+    name: iot-sentinel-network
